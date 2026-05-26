@@ -39,11 +39,19 @@ export function applyPresentationFilter(question, context){
 
 export function scoreVda(answers){
   const scores = Object.fromEntries(WOUNDS.map(w => [w, 0]));
-  answers.forEach(answer => {
+
+  const addAnswer = answer => {
+    const weight = answer?.weight ?? 1;
     Object.entries(answer?.scores || {}).forEach(([key, value]) => {
-      scores[key] = (scores[key] || 0) + value;
+      scores[key] = (scores[key] || 0) + (value * weight);
     });
+  };
+
+  answers.forEach(answer => {
+    if(Array.isArray(answer)) answer.forEach(addAnswer);
+    else addAnswer(answer);
   });
+
   return normalizeScores(scores);
 }
 

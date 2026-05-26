@@ -97,6 +97,7 @@ function showTest(){
   document.getElementById("backHomeDuringTest").onclick = () => alert("Un test est actif. Mets en pause ou termine la question pour éviter de casser les réponses.");
 
   if(session.kind === "pcm") renderRankingQuestion(q);
+  else if(session.kind === "vda") renderVdaDualChoiceQuestion(q);
   else renderSingleChoiceQuestion(q);
 }
 
@@ -119,6 +120,53 @@ function renderSingleChoiceQuestion(q){
   document.getElementById("continueTest").onclick = () => {
     if(!selected) return alert("Choisis une réponse pour continuer.");
     advance(selected);
+  };
+}
+
+function renderVdaDualChoiceQuestion(q){
+  const zone = document.getElementById("answerZone");
+  zone.className = "answer-list";
+  const selected = [];
+
+  const help = document.createElement("p");
+  help.className = "tiny-note";
+  help.textContent = "Choisis jusqu’à 2 réponses : d’abord celle qui te ressemble le plus, puis une deuxième si elle te parle aussi.";
+  zone.appendChild(help);
+
+  const refresh = () => {
+    zone.querySelectorAll("button.answer-option").forEach((btn, index) => {
+      const position = selected.indexOf(q.answers[index]);
+      btn.classList.toggle("selected", position !== -1);
+      const badge = btn.querySelector(".badge");
+      badge.textContent = position === -1 ? String(index + 1) : (position === 0 ? "1er" : "2e");
+    });
+  };
+
+  q.answers.forEach((answer, index) => {
+    const btn = document.createElement("button");
+    btn.className = "answer-option";
+    btn.type = "button";
+    btn.innerHTML = `<span class="badge">${index + 1}</span><span>${escapeHtml(answer.text)}</span>`;
+    btn.onclick = () => {
+      const existingIndex = selected.indexOf(answer);
+      if(existingIndex !== -1){
+        selected.splice(existingIndex, 1);
+      }else{
+        if(selected.length >= 2) selected.shift();
+        selected.push(answer);
+      }
+      refresh();
+    };
+    zone.appendChild(btn);
+  });
+
+  document.getElementById("continueTest").onclick = () => {
+    if(!selected.length) return alert("Choisis au moins une réponse pour continuer.");
+    advance(selected.map((answer, index) => ({
+      text: answer.text,
+      scores: answer.scores,
+      weight: index === 0 ? 1 : 0.5
+    })));
   };
 }
 
