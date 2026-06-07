@@ -4,72 +4,72 @@ export const PCM_TYPES = ["Analyseur", "Persévérant", "Empathique", "Imagineur
 export const VDA_QUESTIONS = [
   {id:"vda_001", category:"rejet", domain:"groupe", title:"Idée ignorée", prompt:"Tu dis une idée dans un groupe, mais personne ne répond vraiment. Tu fais quoi le plus souvent ?", answers:[
     {text:"Tu parles moins et tu gardes tes prochaines idées pour toi.", scores:{rejet:3}},
-    {text:"Tu regardes si quelqu’un t’a quand même écouté.", scores:{abandon:2}},
-    {text:"Tu fais une blague ou tu changes vite de sujet.", scores:{humiliation:2}},
-    {text:"Tu observes qui mène la discussion avant de reparler.", scores:{trahison:2}},
-    {text:"Tu restes calme, mais tu repenses longtemps à ce moment.", scores:{injustice:2}}
+    {text:"Tu regardes si quelqu’un t’a quand même écouté.", scores:{abandon:3}},
+    {text:"Tu fais une blague ou tu changes vite de sujet.", scores:{humiliation:3}},
+    {text:"Tu observes qui mène la discussion avant de reparler.", scores:{trahison:3}},
+    {text:"Tu restes calme, mais tu repenses longtemps à ce moment.", scores:{rejet:3, injustice:1}}
   ]},
   {id:"vda_002", category:"abandon", domain:"lien", title:"Message sans réponse", prompt:"Tu envoies un message à quelqu’un d’important et la réponse tarde beaucoup. Tu fais quoi le plus souvent ?", answers:[
-    {text:"Tu te dis que tu as peut-être écrit quelque chose de trop.", scores:{rejet:2}},
+    {text:"Tu te dis que tu as peut-être écrit quelque chose de trop.", scores:{rejet:3}},
     {text:"Tu vérifies plusieurs fois si la personne a répondu.", scores:{abandon:3}},
-    {text:"Tu fais semblant que ça ne te dérange pas.", scores:{humiliation:2}},
-    {text:"Tu cherches ce qui a pu changer dans son attitude.", scores:{trahison:2}},
-    {text:"Tu te forces à ne rien montrer, même si ça te travaille.", scores:{injustice:2}}
+    {text:"Tu fais semblant que ça ne te dérange pas.", scores:{humiliation:3}},
+    {text:"Tu cherches ce qui a pu changer dans son attitude.", scores:{trahison:3}},
+    {text:"Tu te forces à ne rien montrer, même si ça te travaille.", scores:{humiliation:3, abandon:1}}
   ]},
   {id:"vda_003", category:"humiliation", domain:"erreur", title:"Erreur devant les autres", prompt:"Tu te trompes devant plusieurs personnes. Qu’est-ce qui te ressemble le plus ?", answers:[
-    {text:"Tu voudrais qu’on ne te remarque plus pendant un moment.", scores:{rejet:2}},
-    {text:"Tu cherches un regard qui te montre que tout va bien.", scores:{abandon:2}},
+    {text:"Tu voudrais qu’on ne te remarque plus pendant un moment.", scores:{rejet:3}},
+    {text:"Tu cherches un regard qui te montre que tout va bien.", scores:{abandon:3}},
     {text:"Tu ris ou tu parles vite pour faire passer le moment.", scores:{humiliation:3}},
-    {text:"Tu reprends vite les choses en main pour éviter que ça continue.", scores:{trahison:2}},
-    {text:"Tu gardes un visage calme, mais dedans tu es très tendu.", scores:{injustice:2}}
+    {text:"Tu reprends vite les choses en main pour éviter que ça continue.", scores:{humiliation:3, trahison:1}},
+    {text:"Tu gardes un visage calme, mais dedans tu es très tendu.", scores:{humiliation:3, injustice:1}}
   ]},
   {id:"vda_004", category:"trahison", domain:"confiance", title:"Promesse non tenue", prompt:"Quelqu’un te promet quelque chose, puis ne le fait pas. Tu réagis comment le plus souvent ?", answers:[
-    {text:"Tu prends de la distance pour ne pas être trop touché.", scores:{rejet:2}},
-    {text:"Tu veux savoir si tu comptes encore pour la personne.", scores:{abandon:2}},
-    {text:"Tu réponds plus fort que prévu parce que ça te pique.", scores:{humiliation:2}},
+    {text:"Tu prends de la distance pour ne pas être trop touché.", scores:{rejet:3}},
+    {text:"Tu veux savoir si tu comptes encore pour la personne.", scores:{abandon:3}},
+    {text:"Tu réponds plus fort que prévu parce que ça te pique.", scores:{humiliation:3}},
     {text:"Tu attends des actes clairs avant de croire à nouveau ses mots.", scores:{trahison:3}},
-    {text:"Tu retiens surtout que la règle n’a pas été respectée.", scores:{injustice:2}}
+    {text:"Tu retiens surtout que la règle n’a pas été respectée.", scores:{injustice:3, trahison:1}}
   ]},
   {id:"vda_005", category:"injustice", domain:"regles", title:"Règle différente", prompt:"Une règle est appliquée pour toi, mais pas pour les autres. Tu fais quoi le plus souvent ?", answers:[
-    {text:"Tu te demandes pourquoi on te met à part.", scores:{rejet:2}},
-    {text:"Tu aimerais que quelqu’un voie que ça te pèse.", scores:{abandon:2}},
-    {text:"Tu essaies de ne pas montrer que ça te touche.", scores:{humiliation:2}},
-    {text:"Tu cherches qui profite de la situation.", scores:{trahison:2}},
+    {text:"Tu te demandes pourquoi on te met à part.", scores:{rejet:3}},
+    {text:"Tu aimerais que quelqu’un voie que ça te pèse.", scores:{abandon:3}},
+    {text:"Tu essaies de ne pas montrer que ça te touche.", scores:{humiliation:3}},
+    {text:"Tu cherches qui profite de la situation.", scores:{trahison:3}},
     {text:"Tu as du mal à passer à autre chose tant que ce n’est pas clair.", scores:{injustice:3}}
   ]},
   {id:"vda_006", category:"rejet", domain:"invitation", title:"Invitation floue", prompt:"Des gens parlent d’une sortie, mais tu ne sais pas si tu es vraiment invité. Tu fais quoi ?", answers:[
     {text:"Tu évites de demander et tu fais comme si tu n’avais rien vu.", scores:{rejet:3}},
-    {text:"Tu attends un signe clair qu’ils veulent vraiment que tu viennes.", scores:{abandon:2}},
-    {text:"Tu lances une phrase légère pour voir leur réaction.", scores:{humiliation:2}},
-    {text:"Tu observes qui décide et ce qu’ils attendent vraiment.", scores:{trahison:2}},
-    {text:"Tu te dis qu’ils devraient être plus clairs avec tout le monde.", scores:{injustice:2}}
+    {text:"Tu attends un signe clair qu’ils veulent vraiment que tu viennes.", scores:{abandon:3}},
+    {text:"Tu lances une phrase légère pour voir leur réaction.", scores:{humiliation:3}},
+    {text:"Tu observes qui décide et ce qu’ils attendent vraiment.", scores:{trahison:3}},
+    {text:"Tu te dis qu’ils devraient être plus clairs avec tout le monde.", scores:{injustice:3, rejet:1}}
   ]},
   {id:"vda_007", category:"abandon", domain:"amitie", title:"Proche distant", prompt:"Un proche est très sympa un jour, puis très distant le lendemain. Tu fais quoi le plus souvent ?", answers:[
-    {text:"Tu te mets un peu en retrait pour ne pas trop attendre.", scores:{rejet:2}},
+    {text:"Tu te mets un peu en retrait pour ne pas trop attendre.", scores:{rejet:3}},
     {text:"Tu essaies de retrouver le lien comme avant.", scores:{abandon:3}},
-    {text:"Tu fais le/la détendu·e, même si ça te touche.", scores:{humiliation:2}},
-    {text:"Tu fais attention aux petits signes pour comprendre ce qui arrive.", scores:{trahison:2}},
-    {text:"Tu restes droit·e, mais tu trouves ça difficile à accepter.", scores:{injustice:2}}
+    {text:"Tu fais le/la détendu·e, même si ça te touche.", scores:{humiliation:3}},
+    {text:"Tu fais attention aux petits signes pour comprendre ce qui arrive.", scores:{trahison:3}},
+    {text:"Tu restes droit·e, mais tu trouves ça difficile à accepter.", scores:{injustice:3, abandon:1}}
   ]},
   {id:"vda_008", category:"humiliation", domain:"groupe", title:"Petite remarque", prompt:"Quelqu’un fait une remarque sur toi devant les autres. Elle n’est pas énorme, mais elle te gêne. Tu fais quoi ?", answers:[
-    {text:"Tu te fais petit·e et tu attends que le moment passe.", scores:{rejet:2}},
-    {text:"Tu regardes si quelqu’un remarque que ça t’a touché.", scores:{abandon:2}},
+    {text:"Tu te fais petit·e et tu attends que le moment passe.", scores:{rejet:3}},
+    {text:"Tu regardes si quelqu’un remarque que ça t’a touché.", scores:{abandon:3}},
     {text:"Tu réponds vite, souvent avec humour ou énergie.", scores:{humiliation:3}},
-    {text:"Tu retiens qui a parlé et qui a laissé faire.", scores:{trahison:2}},
-    {text:"Tu gardes ton calme, mais tu trouves que ça ne se fait pas.", scores:{injustice:2}}
+    {text:"Tu retiens qui a parlé et qui a laissé faire.", scores:{trahison:3}},
+    {text:"Tu gardes ton calme, mais tu trouves que ça ne se fait pas.", scores:{injustice:3, humiliation:1}}
   ]},
   {id:"vda_009", category:"trahison", domain:"secret", title:"Info apprise après", prompt:"Tu apprends après coup une information qu’on aurait pu te dire avant. Tu réagis comment ?", answers:[
-    {text:"Tu t’éloignes un peu pour digérer seul·e.", scores:{rejet:2}},
-    {text:"Tu veux comprendre pourquoi on ne t’a pas inclus·e.", scores:{abandon:2}},
-    {text:"Tu peux parler plus sèchement que d’habitude.", scores:{humiliation:2}},
+    {text:"Tu t’éloignes un peu pour digérer seul·e.", scores:{rejet:3}},
+    {text:"Tu veux comprendre pourquoi on ne t’a pas inclus·e.", scores:{abandon:3, trahison:1}},
+    {text:"Tu peux parler plus sèchement que d’habitude.", scores:{humiliation:3}},
     {text:"Tu vérifies les détails avant de refaire confiance.", scores:{trahison:3}},
-    {text:"Tu bloques sur le fait que les choses n’ont pas été dites clairement.", scores:{injustice:2}}
+    {text:"Tu bloques sur le fait que les choses n’ont pas été dites clairement.", scores:{injustice:3, trahison:1}}
   ]},
   {id:"vda_010", category:"injustice", domain:"effort", title:"Effort peu vu", prompt:"Tu fais beaucoup d’efforts, mais les autres le remarquent à peine. Tu fais quoi le plus souvent ?", answers:[
-    {text:"Tu te demandes si ce que tu fais compte vraiment.", scores:{rejet:2}},
-    {text:"Tu aimerais qu’une personne te dise qu’elle a vu tes efforts.", scores:{abandon:2}},
-    {text:"Tu fais comme si ce n’était pas important.", scores:{humiliation:2}},
-    {text:"Tu regardes si quelqu’un utilise ton travail sans le dire.", scores:{trahison:2}},
+    {text:"Tu te demandes si ce que tu fais compte vraiment.", scores:{rejet:3}},
+    {text:"Tu aimerais qu’une personne te dise qu’elle a vu tes efforts.", scores:{abandon:3}},
+    {text:"Tu fais comme si ce n’était pas important.", scores:{humiliation:3}},
+    {text:"Tu regardes si quelqu’un utilise ton travail sans le dire.", scores:{trahison:3, injustice:1}},
     {text:"Tu continues, mais ça reste coincé dans ta tête.", scores:{injustice:3}}
   ]}
 ];
