@@ -71,6 +71,41 @@ export const VDA_QUESTIONS = [
     {text:"Tu fais comme si ce n’était pas important.", scores:{humiliation:3}},
     {text:"Tu regardes si quelqu’un utilise ton travail sans le dire.", scores:{trahison:3, injustice:1}},
     {text:"Tu continues, mais ça reste coincé dans ta tête.", scores:{injustice:3}}
+  ]},
+  {id:"vda_011", category:"injustice", domain:"preparation", title:"Effort passé inaperçu", prompt:"Tu as préparé ou aidé pour quelque chose d’important, mais presque personne ne le remarque. Tu fais quoi le plus souvent ?", answers:[
+    {text:"Tu te dis que tu n’aurais peut-être pas dû t’impliquer autant.", scores:{rejet:3}},
+    {text:"Tu aimerais qu’au moins une personne te dise merci ou te regarde.", scores:{abandon:3}},
+    {text:"Tu fais comme si ce n’était pas grave, même si ça te touche.", scores:{humiliation:3}},
+    {text:"Tu repères qui profite du résultat sans avoir participé.", scores:{trahison:3}},
+    {text:"Tu as du mal à passer à autre chose tant que personne n’en parle.", scores:{injustice:3, rejet:1}}
+  ]},
+  {id:"vda_012", category:"abandon", domain:"lien", title:"Silence soudain", prompt:"Une personne proche devient soudain plus froide, sans t’expliquer pourquoi. Tu fais quoi le plus souvent ?", answers:[
+    {text:"Tu prends du recul pour ne pas insister.", scores:{rejet:3}},
+    {text:"Tu essaies de comprendre ce que tu as pu faire de travers.", scores:{abandon:3}},
+    {text:"Tu fais semblant que tout va bien quand tu la croises.", scores:{humiliation:3}},
+    {text:"Tu observes si son comportement change aussi avec les autres.", scores:{trahison:3}},
+    {text:"Tu trouves difficile de rester dans le doute sans explication.", scores:{injustice:3, abandon:1}}
+  ]},
+  {id:"vda_013", category:"injustice", domain:"regles", title:"Deux poids, deux mesures", prompt:"Tu remarques qu’une même règle n’est pas appliquée pareil selon les personnes. Tu fais quoi le plus souvent ?", answers:[
+    {text:"Tu te demandes si tu es celui ou celle qu’on surveille plus.", scores:{rejet:3}},
+    {text:"Tu cherches un allié qui voit la même chose que toi.", scores:{abandon:3}},
+    {text:"Tu évites d’en parler pour ne pas te mettre en avant.", scores:{humiliation:3}},
+    {text:"Tu notes qui est traité différemment et par qui.", scores:{trahison:3}},
+    {text:"Tu as besoin que les choses soient dites clairement pour tout le monde.", scores:{injustice:3}}
+  ]},
+  {id:"vda_014", category:"rejet", domain:"aide", title:"Demander de l’aide", prompt:"Tu as besoin d’aide pour avancer, mais tu hésites à la demander. Tu fais quoi le plus souvent ?", answers:[
+    {text:"Tu te débrouilles seul·e le plus longtemps possible.", scores:{rejet:3}},
+    {text:"Tu attends qu’on te propose de l’aide sans avoir à la demander.", scores:{abandon:3}},
+    {text:"Tu minimises le problème pour ne pas déranger.", scores:{humiliation:3}},
+    {text:"Tu teste d’abord si la personne semble disponible et fiable.", scores:{trahison:3}},
+    {text:"Tu trouves normal de galérer seul·e alors que d’autres demandent facilement.", scores:{injustice:3, rejet:1}}
+  ]},
+  {id:"vda_015", category:"trahison", domain:"plan", title:"Plan de dernière minute", prompt:"Quelqu’un change un plan convenu au tout dernier moment. Tu fais quoi le plus souvent ?", answers:[
+    {text:"Tu dis que ce n’est pas grave, même si tu es déçu·e.", scores:{rejet:3}},
+    {text:"Tu veux savoir si tu comptes encore dans la décision.", scores:{abandon:3}},
+    {text:"Tu peux réagir sèchement parce que tu n’étais pas préparé·e.", scores:{humiliation:3}},
+    {text:"Tu attends une explication claire avant d’accepter le changement.", scores:{trahison:3}},
+    {text:"Tu retiens que ton temps et ton organisation n’ont pas été respectés.", scores:{injustice:3, trahison:1}}
   ]}
 ];
 
