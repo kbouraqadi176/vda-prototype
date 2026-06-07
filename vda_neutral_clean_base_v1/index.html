@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VDA — Base neutre</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="brand" data-action="home" type="button">VDA · Base neutre</button>
+      <nav>
+        <button data-action="home" type="button">Accueil</button>
+        <button data-action="journal" type="button">Journal</button>
+        <button data-action="coach" type="button">Coach</button>
+      </nav>
+    </header>
+
+    <main id="app" aria-live="polite"></main>
+  </div>
+
+  <template id="tpl-consent">
+    <section class="card narrow">
+      <p class="eyebrow">Cadre de départ</p>
+      <h1>Avant de commencer</h1>
+      <p>Cette base sert à explorer des tendances personnelles et des pistes de suivi. Elle ne remplace pas un diagnostic médical, psychologique ou psychiatrique.</p>
+      <div class="notice">
+        <strong>Règle de lecture</strong>
+        <span>Les résultats sont formulés en hypothèses : “tes réponses semblent indiquer…”, jamais comme une vérité fixe.</span>
+      </div>
+      <label class="checkline">
+        <input id="consentCheck" type="checkbox" />
+        <span>J’ai compris le cadre et j’accepte de continuer.</span>
+      </label>
+      <div class="actions">
+        <button class="primary" id="acceptConsent" type="button">Continuer</button>
+      </div>
+    </section>
+  </template>
+
+  <template id="tpl-identification">
+    <section class="card narrow">
+      <p class="eyebrow">Identification</p>
+      <h1>Créer ton espace local</h1>
+      <p>Pour cette version test, tout reste stocké dans ce navigateur.</p>
+      <label>Nom, prénom ou alias</label>
+      <input id="playerName" class="input" autocomplete="off" placeholder="Ex : Alex" />
+      <label>Coach associé, optionnel</label>
+      <input id="coachName" class="input" autocomplete="off" placeholder="Ex : Kelly" />
+      <div class="actions">
+        <button class="primary" id="saveIdentity" type="button">Entrer</button>
+      </div>
+    </section>
+  </template>
+
+  <template id="tpl-hub">
+    <section class="stack">
+      <div class="hero card">
+        <div>
+          <p class="eyebrow">Accueil</p>
+          <h1 id="hubTitle">Bienvenue</h1>
+          <p>Mode officiel : neutre, clair, sobre. Les habillages narratifs viendront après, sans modifier les questions internes ni le scoring.</p>
+        </div>
+        <div class="status-box" id="resumeBox"></div>
+      </div>
+
+      <section class="grid three">
+        <article class="card test-card">
+          <p class="eyebrow">Test principal</p>
+          <h2>Blessures de l’âme / VDA</h2>
+          <p>20 situations, tirées en cycle équilibré : rejet, abandon, humiliation, trahison, injustice.</p>
+          <button class="primary" data-start-test="vda" type="button">Commencer</button>
+        </article>
+        <article class="card test-card">
+          <p class="eyebrow">Communication</p>
+          <h2>PCM</h2>
+          <p>12 situations avec classement des réponses. Le score respecte l’ordre exact choisi.</p>
+          <button class="primary" data-start-test="pcm" type="button">Commencer</button>
+        </article>
+        <article class="card test-card">
+          <p class="eyebrow">Réactions fortes</p>
+          <h2>Ombre</h2>
+          <p>10 situations pour repérer une réaction intense, un besoin caché et une piste de régulation.</p>
+          <button class="primary" data-start-test="shadow" type="button">Commencer</button>
+        </article>
+      </section>
+
+      <section class="card split">
+        <div>
+          <h2>Journal / suivi</h2>
+          <p>Les résultats sont enregistrés sous forme courte. Les détails restent repliés pour éviter la surcharge.</p>
+        </div>
+        <button data-action="journal" type="button">Ouvrir le journal</button>
+      </section>
+    </section>
+  </template>
+
+  <template id="tpl-test">
+    <section class="card test-layout">
+      <div class="test-head">
+        <div>
+          <p class="eyebrow" id="testMeta"></p>
+          <h1 id="questionTitle"></h1>
+        </div>
+        <button id="pauseTest" type="button">Pause</button>
+      </div>
+      <div class="progress"><span id="progressBar"></span></div>
+      <p class="question" id="questionText"></p>
+      <div id="answerZone"></div>
+      <div class="actions between">
+        <button id="backHomeDuringTest" type="button">Accueil</button>
+        <button class="primary" id="continueTest" type="button">Continuer</button>
+      </div>
+    </section>
+  </template>
+
+  <template id="tpl-result">
+    <section class="card result-card">
+      <p class="eyebrow" id="resultMeta"></p>
+      <h1 id="resultTitle"></h1>
+      <div id="resultSummary" class="summary-box"></div>
+      <details>
+        <summary>Voir plus de détails</summary>
+        <div id="resultDetails" class="details-box"></div>
+      </details>
+      <details>
+        <summary>Vue complète / coach</summary>
+        <div id="coachDetails" class="details-box"></div>
+      </details>
+      <div class="actions">
+        <button class="primary" id="saveResult" type="button">Enregistrer dans le journal</button>
+        <button data-action="home" type="button">Accueil</button>
+      </div>
+    </section>
+  </template>
+
+  <template id="tpl-journal">
+    <section class="stack">
+      <div class="card">
+        <p class="eyebrow">Journal / centre de données</p>
+        <h1>Suivi clair</h1>
+        <div class="filters">
+          <select id="filterTest" class="input">
+            <option value="all">Tous les tests</option>
+            <option value="vda">VDA</option>
+            <option value="pcm">PCM</option>
+            <option value="shadow">Ombre</option>
+          </select>
+          <input id="filterSearch" class="input" placeholder="Filtrer par résultat, date ou note" />
+        </div>
+      </div>
+      <div id="journalList" class="stack"></div>
+    </section>
+  </template>
+
+  <template id="tpl-coach">
+    <section class="card">
+      <p class="eyebrow">Vue coach locale</p>
+      <h1>Lecture de suivi</h1>
+      <p>Le coach lit des hypothèses utiles, pas des verdicts. Le partage reste limité au suivi.</p>
+      <div id="coachPanel" class="stack"></div>
+    </section>
+  </template>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

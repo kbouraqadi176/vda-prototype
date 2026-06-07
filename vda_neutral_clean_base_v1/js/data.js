@@ -116,15 +116,13 @@ export const SHADOW_QUESTIONS = [
   ]}
 ];
 
-export const VDA_CORE_SENTENCE = "Le système guide, il n’enferme pas.";
-
 export const RESULT_TEXTS = {
   wounds:{
-    rejet:{label:"Rejet", voie:"Voie du Fantôme", summary:"une sensibilité à la place, à la visibilité et au risque de ne pas compter.", need:"besoin de sentir que ta présence est accueillie sans devoir te justifier.", step:"Repérer une situation où tu peux prendre une petite place sans te suradapter."},
-    abandon:{label:"Abandon", voie:"Voie du Gardien", summary:"une sensibilité à la continuité du lien et aux distances non expliquées.", need:"besoin de présence fiable, de signes clairs et de sécurité relationnelle.", step:"Formuler une demande simple de présence ou de clarification, sans t’accuser."},
-    humiliation:{label:"Humiliation", voie:"Voie du Berserker", summary:"une sensibilité à la gêne, à l’exposition et au risque de perdre ta dignité.", need:"besoin de respect, de douceur et d’espace pour redevenir stable après une tension.", step:"Nommer intérieurement la gêne avant de répondre, puis choisir une phrase courte."},
-    trahison:{label:"Trahison", voie:"Voie du Dragon", summary:"une sensibilité à la fiabilité, à la cohérence et aux engagements tenus.", need:"besoin d’éléments concrets pour pouvoir relâcher la vigilance.", step:"Demander un fait vérifiable plutôt que chercher à tout contrôler."},
-    injustice:{label:"Injustice", voie:"Voie du Titan", summary:"une sensibilité à l’équité, à la justesse et à l’effort reconnu.", need:"besoin de cohérence, de respect des limites et de reconnaissance de ce qui est porté.", step:"Identifier ce qui est réellement injuste, puis ce qui peut être ajusté concrètement."}
+    rejet:{label:"Rejet", summary:"tes réponses semblent indiquer une sensibilité à la place, à la visibilité et au risque de ne pas compter.", need:"besoin de sentir que ta présence est accueillie sans devoir te justifier.", step:"Repérer une situation où tu peux prendre une petite place sans te suradapter."},
+    abandon:{label:"Abandon", summary:"tes réponses semblent indiquer une sensibilité à la continuité du lien et aux distances non expliquées.", need:"besoin de présence fiable, de signes clairs et de sécurité relationnelle.", step:"Formuler une demande simple de présence ou de clarification, sans t’accuser."},
+    humiliation:{label:"Humiliation", summary:"tes réponses semblent indiquer une sensibilité à la gêne, à l’exposition et au risque de perdre ta dignité.", need:"besoin de respect, de douceur et d’espace pour redevenir stable après une tension.", step:"Nommer intérieurement la gêne avant de répondre, puis choisir une phrase courte."},
+    trahison:{label:"Trahison", summary:"tes réponses semblent indiquer une sensibilité à la fiabilité, à la cohérence et aux engagements tenus.", need:"besoin d’éléments concrets pour pouvoir relâcher la vigilance.", step:"Demander un fait vérifiable plutôt que chercher à tout contrôler."},
+    injustice:{label:"Injustice", summary:"tes réponses semblent indiquer une sensibilité à l’équité, à la justesse et à l’effort reconnu.", need:"besoin de cohérence, de respect des limites et de reconnaissance de ce qui est porté.", step:"Identifier ce qui est réellement injuste, puis ce qui peut être ajusté concrètement."}
   },
   pcm:{
     Analyseur:{need:"structure, informations claires, temps organisé", channel:"questions précises, faits, étapes", stress:"risque de sur-analyse ou de critique du flou", step:"Clarifier une demande en trois points : quoi, quand, attendu."},

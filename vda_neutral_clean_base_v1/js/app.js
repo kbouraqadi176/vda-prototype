@@ -127,11 +127,10 @@ function renderVdaDualChoiceQuestion(q){
   const zone = document.getElementById("answerZone");
   zone.className = "answer-list";
   const selected = [];
-  const continueBtn = document.getElementById("continueTest");
 
   const help = document.createElement("p");
   help.className = "tiny-note";
-  help.textContent = "Choisis 2 réponses : d’abord celle qui te ressemble le plus, puis une deuxième qui te parle aussi.";
+  help.textContent = "Choisis jusqu’à 2 réponses : d’abord celle qui te ressemble le plus, puis une deuxième si elle te parle aussi.";
   zone.appendChild(help);
 
   const refresh = () => {
@@ -141,7 +140,6 @@ function renderVdaDualChoiceQuestion(q){
       const badge = btn.querySelector(".badge");
       badge.textContent = position === -1 ? String(index + 1) : (position === 0 ? "1er" : "2e");
     });
-    continueBtn.disabled = selected.length !== 2;
   };
 
   q.answers.forEach((answer, index) => {
@@ -162,16 +160,14 @@ function renderVdaDualChoiceQuestion(q){
     zone.appendChild(btn);
   });
 
-  continueBtn.onclick = () => {
-    if(selected.length !== 2) return alert("Choisis 2 réponses pour continuer : d’abord la plus proche de toi, puis une deuxième.");
+  document.getElementById("continueTest").onclick = () => {
+    if(!selected.length) return alert("Choisis au moins une réponse pour continuer.");
     advance(selected.map((answer, index) => ({
       text: answer.text,
       scores: answer.scores,
       weight: index === 0 ? 1 : 0.5
     })));
   };
-
-  refresh();
 }
 
 function renderRankingQuestion(q){

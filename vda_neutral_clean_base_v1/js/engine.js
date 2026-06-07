@@ -1,4 +1,4 @@
-import { WOUNDS, PCM_TYPES, RESULT_TEXTS, VDA_CORE_SENTENCE } from "./data.js";
+import { WOUNDS, PCM_TYPES, RESULT_TEXTS } from "./data.js";
 
 export function shuffle(items){
   const copy = [...items];
@@ -80,46 +80,25 @@ function normalizeScores(scores){
   return ordered.map(([key, score]) => ({key, score, percent: Math.round((score / top) * 100)}));
 }
 
-function getVdaConfidenceLabel(gap){
-  if(gap <= 10) return "Profil mixte : plusieurs tendances sont proches.";
-  if(gap <= 25) return "Tendance principale avec nuance forte.";
-  return "Tendance principale plus nette.";
-}
-
 export function buildVdaResult(scored){
   const main = scored[0];
   const second = scored[1];
   const text = RESULT_TEXTS.wounds[main.key];
   const secondText = RESULT_TEXTS.wounds[second.key];
-  const gap = main.percent - second.percent;
-  const confidenceLabel = getVdaConfidenceLabel(gap);
-
   return {
     kind:"vda",
-    title:`Lecture principale : ${text.label} · ${text.voie}`,
-    summary:`${confidenceLabel} Tes réponses suggèrent ${text.summary} Ce résultat est une piste à vérifier avec ton vécu.`,
+    title:`Lecture principale : ${text.label}`,
+    summary:`Tes réponses semblent indiquer ${text.summary}`,
     details:[
-      `Tendance principale : ${text.label} — ${text.voie}.`,
-      `Tendance secondaire : ${secondText.label} — ${secondText.voie}.`,
-      `Lecture : ${confidenceLabel}`,
       `Besoin possible : ${text.need}`,
-      `Prochain pas : ${text.step}`,
-      VDA_CORE_SENTENCE
+      `Nuance secondaire : ${secondText.label} peut aussi colorer certaines réactions.`,
+      `Prochain pas : ${text.step}`
     ],
     coach:[
-      `Hypothèse principale : ${text.label} · ${text.voie} (${main.percent}%).`,
-      `Hypothèse secondaire : ${secondText.label} · ${secondText.voie} (${second.percent}%).`,
-      `Écart normalisé : ${gap} points de pourcentage — ${confidenceLabel}`,
-      "À vérifier avec ton vécu : contexte réel, intensité, répétition, ressources déjà présentes.",
-      VDA_CORE_SENTENCE
+      `Hypothèse principale : ${text.label} (${main.percent}%).`,
+      `Hypothèse secondaire : ${secondText.label} (${second.percent}%).`,
+      "À vérifier en entretien : contexte réel, intensité, répétition, ressources déjà présentes."
     ],
-    mainWound:text.label,
-    mainVoie:text.voie,
-    secondWound:secondText.label,
-    secondVoie:secondText.voie,
-    gap,
-    confidenceLabel,
-    coreSentence:VDA_CORE_SENTENCE,
     scores:scored
   };
 }
