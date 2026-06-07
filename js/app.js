@@ -55,6 +55,8 @@ function showHub(){
   document.getElementById("hubTitle").textContent = `Bienvenue ${state.user?.name || ""}`;
   const resumeBox = document.getElementById("resumeBox");
   resumeBox.innerHTML = `<strong>État</strong><br>${state.journal.length} résultat(s) enregistré(s).<br>${state.user?.coach ? `Coach associé : ${escapeHtml(state.user.coach)}` : "Aucun coach associé."}`;
+  const vdaCount = drawBalancedCycle(VDA_QUESTIONS, WOUNDS, 4).length;
+  document.getElementById("vdaTestBlurb").textContent = `${vdaCount} situations concrètes, tirées en cycle équilibré pour repérer des tendances possibles.`;
   document.querySelectorAll("[data-start-test]").forEach(btn => {
     btn.onclick = () => startTest(btn.dataset.startTest);
   });
